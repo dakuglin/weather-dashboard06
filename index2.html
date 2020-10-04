@@ -18,10 +18,19 @@
             /* text-align:center; */
         }
 
-        .col-12 {
-            text-align: center;
-            background-color: grey;
-            color: white;
+        #header {
+        text-align: center;
+        max-width: 100%;
+        height:auto; 
+        background-color: grey; 
+        color: whitesmoke;
+        }
+        
+        .search {
+            color:black;
+            text-align:left;
+            max-width: 100%;
+            height:auto;
         }
 
     </style>
@@ -32,7 +41,7 @@
 
 <body>
 
-    <div class= "container"> 
+    <div class= "container-fluid"> 
         <div class="row">
             <div class= "col-12" id="header">
                 <h1>Weather Dashboard</h1> 
@@ -41,33 +50,57 @@
 
         <div class="row">
             <div class="col-4 col-md-4">
-
-                <h3 class="search"></h3>
-                <form id="city-form">
-                    <label for="city-input">Search for a City:</label>
-                    <br>
-                    <input type="text" id="city-input">
-                    <input id="find-city" type="submit" value="Search">  <!--button will trigger our AJAX call -->
-                </form> 
-                
+                <form>
+                    <div class="form-group">
+                      <label for="city-input">Search for a City:</label>
+                      <input type="text" class="form-control" id="city-input">
+                    </div>
+                    <button id="find-city" type="submit" class="btn btn-primary">Search</button>
+                  </form>
             </div>
 
             <div class="col-8 col-med-8">
 
-                <h2 id="cityName"></h2>
+                <h3 id="cityName" class="date"></h3>
                 <div id="cityTemp"></div>
                 <div id="cityHumidity"></div>
                 <div id="cityWindSpeed"></div>
                 <div id="cityUVIndex"></div> 
                  
             </div>
-       </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 col-md-4">
+                <div id="search1"></div>
+                
+            </div>
+            <div class="col-8 col-med-8">
+                <h3>5-day Forecast:</h3>
+                <div id="day1"></div>
+                <div id="day2"></div>
+                <div id="day3"></div>
+                <div id="day4"></div>
+                <div id="day5"></div>
+            </div>
+        </div>
+       
          
     </div>
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
 
 </body>
 </html>
+
+
+
+                <!-- <h3 class="search"></h3>
+                <form id="city-form">
+                    <label for="city-input">Search for a City:</label>
+                    <br>
+                    <input type="text" id="city-input">
+                    <input id="find-city" type="submit" value="Search">  button will trigger our AJAX call -->
+                <!-- </form>  -->
