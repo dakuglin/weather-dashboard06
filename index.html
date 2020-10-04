@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!--bootstrap links-->
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+             <div class="col-12" id="header">
+                 <!--dynamically add h1 tag-->
+             </div>
+        </div>
+
+         <div class="row">
+            <div class="col-4"> 
+                 <h3 class="search"></h3> -->
+                 <input type="text" class="inputValue">
+                <input type="submit" value="Search" id="button"> -->
+                 <form id="city-form">
+                    <label for="city-input">Search for a City:</label>
+                    <br>
+                    <input type="text" id="city-input">
+              
+                     <!--This button will trigger our AJAX call -->
+                    <input id="find-city" type="submit" value="Search">
+                  </form> 
+             </div>
+             <div class="col-8">
+                <h2 id="cityName"></h2>
+                <div id="cityTemp"></div>
+                <div id="cityHumidity"></div>
+                <div id="cityWindSpeed"></div>
+                <div id="cityUVIndex"></div> 
+                 
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+
+body {
+    background-color: rgb(236, 229, 229);  
+};
+
+#header {
+    text-align: center;
+    padding-top: 40px; 
+    padding-bottom: 40px; 
+    background-color: grey; 
+    color: whitesmoke;
+};
+
+
+
+
+/* font-family: 'Noto Sans', sans-serif; */

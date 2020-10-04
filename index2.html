@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+
+    <style>
+
+        div.row > div {
+            outline:1px solid grey;
+            padding:8px;
+            /* text-align:center; */
+        }
+
+        .col-12 {
+            text-align: center;
+            background-color: grey;
+            color: white;
+        }
+
+    </style>
+    
+    
+</head>
+
+
+<body>
+
+    <div class= "container"> 
+        <div class="row">
+            <div class= "col-12" id="header">
+                <h1>Weather Dashboard</h1> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4 col-md-4">
+
+                <h3 class="search"></h3>
+                <form id="city-form">
+                    <label for="city-input">Search for a City:</label>
+                    <br>
+                    <input type="text" id="city-input">
+                    <input id="find-city" type="submit" value="Search">  <!--button will trigger our AJAX call -->
+                </form> 
+                
+            </div>
+
+            <div class="col-8 col-med-8">
+
+                <h2 id="cityName"></h2>
+                <div id="cityTemp"></div>
+                <div id="cityHumidity"></div>
+                <div id="cityWindSpeed"></div>
+                <div id="cityUVIndex"></div> 
+                 
+            </div>
+       </div>
+         
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
