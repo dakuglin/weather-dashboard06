@@ -13,6 +13,8 @@ $(document).ready(function() {   //goes in every jQuery script
 
         var APIKey = "b9f7c13b06d755b57198e1781901ad93" //my API key
 
+        var date = moment().format('l');  //current date
+
         //________________________________________________________________________________________________
         // current weather query
 
@@ -31,8 +33,8 @@ $(document).ready(function() {   //goes in every jQuery script
         
 
             //display main portion of city weather content
-            var cityName = $("#cityName").text(response.name).append(cityName) //city name
-            cityName.addClass("search")
+            var cityName = $("#cityName").text(response.name + " " + "(" + date + ")" ).append(cityName) //city name
+            //cityName.addClass("search")
 
             // Convert the temp to fahrenheit
             var tempK = response.main.temp;
@@ -43,6 +45,26 @@ $(document).ready(function() {   //goes in every jQuery script
             var cityHumidity = $("#cityHumidity").text("Humidity: " + response.main.humidity +" %").append(cityHumidity) //current humidity
 
             var cityWindSpeed = $("#cityWindSpeed").text("Wind Speed: " + response.wind.speed).append(cityWindSpeed) //current wind speed
+
+
+            //______________________________________________________________________________________________
+            //uv index query
+
+            var queryUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
+
+            $.ajax({
+                url: queryUVIndex,
+                method: "GET"
+            })
+            // We store all of the retrieved data inside of an object called "response"
+            .then(function(respUV) {
+        
+                console.log(respUV); //log the response 
+
+                var cityUV = $("#cityUVIndex").text("UV Index: " + respUV.value).append(cityUV) //current wind speed
+
+            }); 
+
 
             //________________________________________________________________________________________________
            // 5-day forecast query
@@ -58,7 +80,25 @@ $(document).ready(function() {   //goes in every jQuery script
         
                 console.log(resp); //log the response 
 
+                $("#forecast").text("5-Day-Forecast:");
+
+                // Convert the temp to fahrenheit
+                // var tempIndex = 0;
+                // var arr = ["1","2","3","4","5"]
+                for (var i=0; i < 5; i++) {
+                    var tempK = resp.list[i].main.temp;
+                    console.log(tempK)
+                    var tempF = (tempK - 273.15) * 1.80 + 32;
+                    console.log(tempF)
+                };
+
+                var day1Temp = $("#forecastTemp1").text(tempF.toFixed(2) + " F").append(day1Temp)
+                
+
+
+
             }); 
+
             
             //________________________________________________________________________________________________
             //local storage of user city input

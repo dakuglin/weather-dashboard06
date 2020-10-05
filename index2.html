@@ -4,36 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Noto+Sans&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
 
-    <style>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Weather Dashboard</title>
+
+     <style>
 
         div.row > div {
             outline:1px solid grey;
             padding:8px;
             /* text-align:center; */
-        }
+        } 
 
-        #header {
-        text-align: center;
-        max-width: 100%;
-        height:auto; 
-        background-color: grey; 
-        color: whitesmoke;
-        }
-        
-        .search {
-            color:black;
-            text-align:left;
-            max-width: 100%;
-            height:auto;
-        }
-
-    </style>
+    </style> 
     
     
 </head>
@@ -49,40 +40,71 @@
         </div>
 
         <div class="row">
-            <div class="col-4 col-md-4">
+            <div class="col-3 col-md-3">
                 <form>
-                    <div class="form-group">
-                      <label for="city-input">Search for a City:</label>
+                    <label for="city-input">Search for a City:</label>
+                    <div class="form-inline">
                       <input type="text" class="form-control" id="city-input">
+                      <button id="find-city" type="submit" class="btn btn-primary">Search</button>
                     </div>
-                    <button id="find-city" type="submit" class="btn btn-primary">Search</button>
+                    
                   </form>
             </div>
 
-            <div class="col-8 col-med-8">
-
-                <h3 id="cityName" class="date"></h3>
-                <div id="cityTemp"></div>
-                <div id="cityHumidity"></div>
-                <div id="cityWindSpeed"></div>
-                <div id="cityUVIndex"></div> 
-                 
+            <div class="col-9 col-med-9">
+                <div class=" currentWeather">
+                    <h2 id="cityName" class="date"></h2>
+                    <div id="cityTemp" class="cityInfo"></div>
+                    <br>
+                    <div id="cityHumidity" class="cityInfo"></div>
+                    <br>
+                    <div id="cityWindSpeed" class="cityInfo"></div>
+                    <br>
+                    <div id="cityUVIndex" class="cityInfo"></div> 
+                </div>    
             </div>
         </div>
 
         <div class="row">
-            <div class="col-4 col-md-4">
+            <div class="col-3 col-md-3">
                 <div id="search1"></div>
+            </div> 
+
+             <div class="col-9 col-med-9 forecastWeather">
+                <h3 id="forecast"></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class ="col-3">
                 
             </div>
-            <div class="col-8 col-med-8">
-                <h3>5-day Forecast:</h3>
-                <div id="day1"></div>
-                <div id="day2"></div>
-                <div id="day3"></div>
-                <div id="day4"></div>
-                <div id="day5"></div>
+            <div class=" col-md-9 col-lg-1">
+                <div id="date1"></div>
+                <div id="forecastTemp1"></div>
+                <div id="forecastHum1"></div>
             </div>
+            <div class=" col-md-9 col-lg-1">
+                <div id="date2"></div>
+                <div id="forecastTemp2"></div>
+                <div id="forecastHum2"></div>
+            </div>
+            <div class=" col-md-9 col-lg-1">
+                <div id="date3"></div>
+                <div id="forecastTemp3"></div>
+                <div id="forecastHum3"></div>
+            </div>
+            <div class=" col-md-9 col-lg-1">
+                <div id="date4"></div>
+                <div id="forecastTemp4"></div>
+                <div id="forecastHum4"></div>
+           </div>
+           <div class=" col-md-9 col-lg-1">
+                <div id="date5"></div>
+                <div id="forecastTemp5"></div>
+                <div id="forecastHum5"></div>
+            </div>
+           
         </div>
        
          
@@ -94,13 +116,3 @@
 
 </body>
 </html>
-
-
-
-                <!-- <h3 class="search"></h3>
-                <form id="city-form">
-                    <label for="city-input">Search for a City:</label>
-                    <br>
-                    <input type="text" id="city-input">
-                    <input id="find-city" type="submit" value="Search">  button will trigger our AJAX call -->
-                <!-- </form>  -->

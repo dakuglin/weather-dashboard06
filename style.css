@@ -1,16 +1,61 @@
 
 body {
-    background-color: rgb(236, 229, 229);  
+    background-color: rgb(233, 233, 233);  
 };
+
+div.row > div {
+    outline: 1px solid grey;
+    padding: 8px;
+}
+
+h1 {
+    font-family: 'Libre Baskerville', serif;
+    padding-top: 25px;   
+}
 
 #header {
     text-align: center;
-    padding-top: 40px; 
-    padding-bottom: 40px; 
+    max-width: 100%;
+    height:auto; 
     background-color: grey; 
     color: whitesmoke;
-};
+    height:120px;
+}
 
+#cityName {
+    color:rgb(83, 13, 13);
+    text-align:left;
+    max-width: 100%;
+    height:auto;
+    padding-bottom:20px;
+    font-size:40px;
+}
+
+.currentWeather {
+    font-family: 'Noto Sans', sans-serif;
+    border: 5px solid lightgray ;
+    height:380px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.forecastWeather {
+    font-family: 'Noto Sans', sans-serif;
+    padding-left:30px;
+}
+
+.cityInfo {
+    font-size:25px;
+}
+
+#cityUVIndex{
+    /* color:green; */
+}
+
+.col-md-9 {
+    height: 150px;
+    width:200px;
+}
 
 
 
