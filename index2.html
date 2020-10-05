@@ -16,7 +16,7 @@
 
     <title>Weather Dashboard</title>
 
-     <style>
+     <!-- <style>
 
         div.row > div {
             outline:1px solid grey;
@@ -25,7 +25,7 @@
         } 
 
     </style> 
-    
+     -->
     
 </head>
 
@@ -47,12 +47,14 @@
                       <input type="text" class="form-control" id="city-input">
                       <button id="find-city" type="submit" class="btn btn-primary">Search</button>
                     </div>
-                    
+
+                    <ul class="list-group history"></ul>
+
                   </form>
             </div>
             <!--current weather div-->
             <div class="col-9 col-med-9">
-                <div class=" currentWeather">
+                <div class="currentWeather results">
                     <h2 id="cityName" class="date"></h2>
                     <div id="cityTemp" class="cityInfo"></div>
                     <br>
@@ -75,33 +77,36 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class ="col-3">
-                
-            </div>
-            <div class="col-md-9 col-lg-1 fivedayForecast">
+        <div class="row offset-md-3">
+            
+            <div class="col-md-2 fivedayForecast">
                 <div id="date1"></div>
+                <div id="img1"></div>
                 <div id="forecastTemp1" class="padding"></div>
                 <div id="forecastHum1"></div>
             </div>
             <br>
-            <div class="col-md-9 col-lg-1 fivedayForecast">
+            <div class="col-md-2 fivedayForecast">
                 <div id="date2"></div>
+                <div id="img2"></div>
                 <div id="forecastTemp2" class="padding"></div>
                 <div id="forecastHum2"></div>
             </div>
-            <div class="col-md-9 col-lg-1 fivedayForecast">
+            <div class="col-md-2 fivedayForecast">
                 <div id="date3"></div>
+                <div id="img3"></div>
                 <div id="forecastTemp3" class="padding"></div>
                 <div id="forecastHum3"></div>
             </div>
-            <div class="col-md-9 col-lg-1 fivedayForecast">
+            <div class="col-md-2 fivedayForecast">
                 <div id="date4"></div>
+                <div id="img4"></div>
                 <div id="forecastTemp4" class="padding"></div>
                 <div id="forecastHum4"></div>
            </div>
-           <div class="col-md-9 col-lg-1 fivedayForecast">
+           <div class="col-md-2 fivedayForecast">
                 <div id="date5"></div>
+                <div id="img5"></div>
                 <div id="forecastTemp5" class="padding"></div>
                 <div id="forecastHum5"></div>
             </div>

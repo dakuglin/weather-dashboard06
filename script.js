@@ -4,7 +4,7 @@ $(document).ready(function() {   //goes in every jQuery script
     //---------------------------------------------------------------------------------------------
     $("#find-city").on("click", function(event) {
 
-        // ___________________________________________________________________________________________________
+        // ________________________________________________________________________________________
         //global variables
 
         event.preventDefault();
@@ -14,12 +14,30 @@ $(document).ready(function() {   //goes in every jQuery script
         var APIKey = "b9f7c13b06d755b57198e1781901ad93" //my API key
 
         var date = moment().format('l');  //current date
+        
+        var history = JSON.parse(localStorage.getItem("history")) || [];
 
-        //________________________________________________________________________________________________
+        //____________________________________________________________________________________________
+      
+        function makeRow(text) {
+            var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
+            $(".history").append(li);
+        }
+        for (var i=0; i<history.length; i++) {
+            makeRow(history[i]);
+        }
+
+        //__________________________________________________________________________________________
         // current weather query
 
         var queryCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
-        
+
+        if (history.indexOf(city) === -1) {
+            history.push(city);
+            localStorage.setItem("history",JSON.stringify(history));
+            makeRow(city);
+        };
+
         $.ajax({
             url: queryCurrentWeather,
             method: "GET"
@@ -34,12 +52,16 @@ $(document).ready(function() {   //goes in every jQuery script
             //var icon = response.weather[0].icon;
             //console.log(icon);
 
-            var img = $("#cityName").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-            console.log(img)
+            var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            
 
             //display main portion of city weather content
-            var cityName = $("#cityName").text(response.name + " " + "(" + date + ")" + img).append(cityName) //city name
-            //cityName.addClass("search")
+            var cityName = $("#cityName").text(response.name + " " + "(" + date + ")").append(cityName) //city name
+
+            cityName.append(img)
+
+            var styling = $(".results");
+            styling.addClass("currentWeather")
 
             // Convert the temp to fahrenheit
             var tempK = response.main.temp;
@@ -52,7 +74,7 @@ $(document).ready(function() {   //goes in every jQuery script
             var cityWindSpeed = $("#cityWindSpeed").text("Wind Speed: " + response.wind.speed).append(cityWindSpeed) //current wind speed
 
 
-            //______________________________________________________________________________________________
+            //______________________________________________________________________________________
             //uv index query
 
             var queryUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
@@ -71,8 +93,8 @@ $(document).ready(function() {   //goes in every jQuery script
             }); 
 
 
-            //________________________________________________________________________________________________
-           // 5-day forecast query
+            //______________________________________________________________________________________
+            // 5-day forecast query
 
             var queryForecastWeather = "http://api.openweathermap.org/data/2.5/forecast?" +"q=" + city + "&appid=" + APIKey; //link to get weather forecast for specfic city seleccted by user
 
@@ -87,56 +109,64 @@ $(document).ready(function() {   //goes in every jQuery script
 
                 $("#forecast").text("5-Day-Forecast:");
 
-                // Convert the temp to fahrenheit
-                // for (var i=0; i < 5; i++) {
-                //     var tempK = resp.list[i].main.temp_max;
-                //     var tempF = (tempK - 273.15) * 1.80 + 32;
-                //     console.log(tempF)
-                //     //var forecastTempF = tempF.split()
-                //     var humidity = resp.list[i].main.humidity;
-                //     console.log(humidity)  
-                // };
-             
-                tempF = ["1","2","3","4","5"];
+                var date1 = $("#date1").text(resp.list[7].dt_txt.slice(0,11)).append(date1);
+                var date2 = $("#date2").text(resp.list[15].dt_txt.slice(0,11)).append(date2);
+                var date3 = $("#date3").text(resp.list[23].dt_txt.slice(0,11)).append(date3);
+                var date4 = $("#date4").text(resp.list[31].dt_txt.slice(0,11)).append(date4);
+                var date5 = $("#date5").text(resp.list[39].dt_txt.slice(0,11)).append(date5);
 
-                var day1Temp = $("#forecastTemp1").text("Temp: " + tempF[0] + " F").append(day1Temp);
-                var day2Temp = $("#forecastTemp2").text("Temp: " + tempF[1] + " F").append(day2Temp);
-                var day3Temp = $("#forecastTemp3").text("Temp: " + tempF[2] + " F").append(day3Temp);
-                var day4Temp = $("#forecastTemp4").text("Temp: " + tempF[3] + " F").append(day4Temp);
-                var day5Temp = $("#forecastTemp5").text("Temp: " + tempF[4] + " F").append(day5Temp);
 
-                humidityForecast = ["1","2","3","4","5"];
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[7].weather[0].icon + ".png");
+                $("#img1").append(img)
 
-                var day1Humidity = $("#forecastHum1").text("Humidity: " + humidityForecast[0] +" %").append(day1Humidity); 
-                var day2Humidity = $("#forecastHum2").text("Humidity: " + humidityForecast[1] +" %").append(day2Humidity); 
-                var day3Humidity = $("#forecastHum3").text("Humidity: " + humidityForecast[2] +" %").append(day3Humidity); 
-                var day4Humidity = $("#forecastHum4").text("Humidity: " + humidityForecast[3] +" %").append(day4Humidity); 
-                var day5Humidity = $("#forecastHum5").text("Humidity: " + humidityForecast[4] +" %").append(day5Humidity); 
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[15].weather[0].icon + ".png");
+                $("#img2").append(img)
 
-                $(".col-md-9").removeClass("display")
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[23].weather[0].icon + ".png");
+                $("#img3").append(img)
 
-                var date1 = $("#date1").text("(10/6/2020)").append(date1);
-                var date2 = $("#date2").text("(10/7/2020)").append(date2);
-                var date3 = $("#date3").text("(10/8/2020)").append(date3);
-                var date4 = $("#date4").text("(10/9/2020)").append(date4);
-                var date5 = $("#date5").text("(10/10/2020)").append(date5);
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[31].weather[0].icon + ".png");
+                $("#img4").append(img)
 
+                var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[39].weather[0].icon + ".png");
+                $("#img5").append(img)
+        
+
+                var tempK = resp.list[7].main.temp;
+                var tempF = (tempK - 273.15) * 1.80 + 32;
+                var day1Temp = $("#forecastTemp1").text("Temp: " + tempF.toFixed(2) + " F").append(day1Temp);
+
+                var tempK = resp.list[15].main.temp;
+                var tempF = (tempK - 273.15) * 1.80 + 32;
+                var day2Temp = $("#forecastTemp2").text("Temp: " + tempF.toFixed(2) + " F").append(day2Temp);
+
+                var tempK = resp.list[23].main.temp;
+                var tempF = (tempK - 273.15) * 1.80 + 32;
+                var day3Temp = $("#forecastTemp3").text("Temp: " + tempF.toFixed(2) + " F").append(day3Temp);
+
+                var tempK = resp.list[31].main.temp;
+                var tempF = (tempK - 273.15) * 1.80 + 32;
+                var day4Temp = $("#forecastTemp4").text("Temp: " + tempF.toFixed(2) + " F").append(day4Temp);
+
+                var tempK = resp.list[39].main.temp;
+                var tempF = (tempK - 273.15) * 1.80 + 32;
+                var day5Temp = $("#forecastTemp5").text("Temp: " + tempF.toFixed(2) + " F").append(day5Temp);
+
+
+                var day1Humidity = $("#forecastHum1").text("Humidity: " + resp.list[7].main.humidity +"%").append(day1Humidity); 
+                var day2Humidity = $("#forecastHum2").text("Humidity: " + resp.list[15].main.humidity +"%").append(day2Humidity); 
+                var day3Humidity = $("#forecastHum3").text("Humidity: " + resp.list[23].main.humidity +"%").append(day3Humidity); 
+                var day4Humidity = $("#forecastHum4").text("Humidity: " + resp.list[31].main.humidity +"%").append(day4Humidity); 
+                var day5Humidity = $("#forecastHum5").text("Humidity: " + resp.list[39].main.humidity +"%").append(day5Humidity); 
+
+
+               
                 
 
             }); 
-
-            
-            //________________________________________________________________________________________________
-            //local storage of user city input
-
-             localStorage.setItem("City",city);
-             $("#search1").val(localStorage.getItem('City'));
- 
  
         });
 
     });
-
-
 
 });    
