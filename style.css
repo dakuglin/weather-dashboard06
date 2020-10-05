@@ -39,9 +39,9 @@ h1 {
     padding-left: 30px;
 }
 
-.forecastWeather {
+#forecast {
     font-family: 'Noto Sans', sans-serif;
-    padding-left:30px;
+    padding-top:20px;
 }
 
 .cityInfo {
@@ -52,9 +52,18 @@ h1 {
     /* color:green; */
 }
 
-.col-md-9 {
-    height: 150px;
-    width:200px;
+.fivedayForecast {
+    /* display:none; */
+    font-family: 'Noto Sans', sans-serif;
+    height: 200px;
+    width:250px;
+    background-color: #0275d8;
+    color:white;
+    border: 5px solid white;
+}
+
+.padding {
+    padding-top: 100px;
 }
 
 
