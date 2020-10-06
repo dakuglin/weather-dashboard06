@@ -5,7 +5,7 @@ $(document).ready(function() {   //goes in every jQuery script
     $("#find-city").on("click", function(event) {
 
         // ________________________________________________________________________________________
-        //global variables
+        //global variables for entire page
 
         event.preventDefault();
 
@@ -30,7 +30,7 @@ $(document).ready(function() {   //goes in every jQuery script
 
         $(".history").on("click", "li", function () {
             var city = $(this).text();
-            
+
             var queryCurrentWeather = "http://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
 
         $.ajax({
