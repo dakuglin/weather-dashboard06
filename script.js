@@ -31,7 +31,7 @@ $(document).ready(function() {   //goes in every jQuery script
         $(".history").on("click", "li", function () {
             var city = $(this).text();
 
-            var queryCurrentWeather = "http://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
+            var queryCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
 
         $.ajax({
             url: queryCurrentWeather,
@@ -51,7 +51,7 @@ $(document).ready(function() {   //goes in every jQuery script
             var latitude = response.coord.lat; //needed for uv index
             var longitude = response.coord.lon; //needed for uv index
 
-            var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
             
 
             //display main portion of city weather content
@@ -76,7 +76,7 @@ $(document).ready(function() {   //goes in every jQuery script
             //______________________________________________________________________________________
             //uv index query
 
-            var queryUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
+            var queryUVIndex = "https://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
 
             $.ajax({
                 url: queryUVIndex,
@@ -95,7 +95,7 @@ $(document).ready(function() {   //goes in every jQuery script
             //______________________________________________________________________________________
             // 5-day forecast query
 
-            var queryForecastWeather = "http://api.openweathermap.org/data/2.5/forecast?" +"q=" + city + "&appid=" + APIKey; //link to get weather forecast for specfic city seleccted by user
+            var queryForecastWeather = "https://api.openweathermap.org/data/2.5/forecast?" +"q=" + city + "&appid=" + APIKey; //link to get weather forecast for specfic city seleccted by user
 
             $.ajax({
                 url: queryForecastWeather,
@@ -170,7 +170,7 @@ $(document).ready(function() {   //goes in every jQuery script
         //__________________________________________________________________________________________
         // current weather query
     
-        var queryCurrentWeather = "http://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
+        var queryCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
 
         $.ajax({
             url: queryCurrentWeather,
@@ -190,7 +190,7 @@ $(document).ready(function() {   //goes in every jQuery script
             var latitude = response.coord.lat; //needed for uv index
             var longitude = response.coord.lon; //needed for uv index
 
-            var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
             
 
             //display main portion of city weather content
@@ -215,7 +215,7 @@ $(document).ready(function() {   //goes in every jQuery script
             //______________________________________________________________________________________
             //uv index query
 
-            var queryUVIndex = "http://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
+            var queryUVIndex = "https://api.openweathermap.org/data/2.5/uvi?lat="+ latitude + "&lon=" + longitude + "&appid=" + APIKey; //link to uv index for specfic city seleccted by user
 
             $.ajax({
                 url: queryUVIndex,
@@ -234,7 +234,7 @@ $(document).ready(function() {   //goes in every jQuery script
             //______________________________________________________________________________________
             // 5-day forecast query
 
-            var queryForecastWeather = "http://api.openweathermap.org/data/2.5/forecast?" +"q=" + city + "&appid=" + APIKey; //link to get weather forecast for specfic city seleccted by user
+            var queryForecastWeather = "https://api.openweathermap.org/data/2.5/forecast?" +"q=" + city + "&appid=" + APIKey; //link to get weather forecast for specfic city seleccted by user
 
             $.ajax({
                 url: queryForecastWeather,
