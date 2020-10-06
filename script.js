@@ -27,16 +27,16 @@ $(document).ready(function() {   //goes in every jQuery script
             makeRow(history[i]);
         }
 
-        //__________________________________________________________________________________________
-        // current weather query
-
-        var queryCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
-
         if (history.indexOf(city) === -1) {
             history.push(city);
             localStorage.setItem("history",JSON.stringify(history));
             makeRow(city);
         };
+
+        //__________________________________________________________________________________________
+        // current weather query
+    
+        var queryCurrentWeather = "https://api.openweathermap.org/data/2.5/weather?" + "q=" + city + "&appid=" + APIKey; //link to get current forecast for specfic city seleccted by user
 
         $.ajax({
             url: queryCurrentWeather,
@@ -115,7 +115,6 @@ $(document).ready(function() {   //goes in every jQuery script
 
                 var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[7].weather[0].icon + ".png");
                 $("#img1").append(img)
-                
 
                 var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[15].weather[0].icon + ".png");
                 $("#img2").append(img)
@@ -156,10 +155,6 @@ $(document).ready(function() {   //goes in every jQuery script
                 var day3Humidity = $("#forecastHum3").text("Humidity: " + resp.list[23].main.humidity +"%").append(day3Humidity); 
                 var day4Humidity = $("#forecastHum4").text("Humidity: " + resp.list[31].main.humidity +"%").append(day4Humidity); 
                 var day5Humidity = $("#forecastHum5").text("Humidity: " + resp.list[39].main.humidity +"%").append(day5Humidity); 
-
-
-               
-                
 
             }); 
  
