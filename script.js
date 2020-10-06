@@ -49,9 +49,6 @@ $(document).ready(function() {   //goes in every jQuery script
             var latitude = response.coord.lat; //needed for uv index
             var longitude = response.coord.lon; //needed for uv index
 
-            //var icon = response.weather[0].icon;
-            //console.log(icon);
-
             var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
             
 
@@ -118,6 +115,7 @@ $(document).ready(function() {   //goes in every jQuery script
 
                 var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[7].weather[0].icon + ".png");
                 $("#img1").append(img)
+                
 
                 var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + resp.list[15].weather[0].icon + ".png");
                 $("#img2").append(img)
